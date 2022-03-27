@@ -20,10 +20,11 @@ export default {
         imgupload: '图片',
         editor: '编辑器',
         cascader: '级联选择器',
-        table: '子表单',
+        // table: '子表单',
         grid: '栅格布局',
         tabs: '标签页',
-        divider: '分割线'
+        divider: '分割线',
+        table: '表格',
       },
       basic: {
         title: '基础字段',

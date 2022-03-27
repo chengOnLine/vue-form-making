@@ -202,6 +202,20 @@
     <template v-if="widget.type == 'text'">
       <span>{{dataModel}}</span>
     </template>
+
+    <template v-if="widget.type == 'table'">
+        <el-table
+          :data='widget.options.defaultValue'
+          style="width: 100%">
+          <el-table-column 
+            v-for="(item,index) in widget.options.columns"
+            :key="index"
+            :prop='item.prop'
+            :label='item.label'
+            :width='item.width'>
+          </el-table-column>
+      </el-table>
+    </template>
   </el-form-item>
 </template>
 

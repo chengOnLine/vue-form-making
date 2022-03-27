@@ -20,10 +20,11 @@ export default {
         imgupload: 'Image',
         editor: 'Editor',
         cascader: 'Cascader',
-        table: 'Sub-table',
+        // table: 'Sub-table',
         grid: 'Grid',
         tabs: 'Tabs',
-        divider: 'Divider'
+        divider: 'Divider',
+        table: 'Table',
       },
       basic: {
         title: 'Basic Component',
