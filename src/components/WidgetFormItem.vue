@@ -193,7 +193,7 @@
               :data='element.options.defaultValue'
               style="width: 100%">
               <el-table-column 
-                v-for="(item,index) in element.options.columns"
+                v-for="(item,index) in element.options.options"
                 :key="index"
                 :prop='item.prop'
                 :label='item.label'
@@ -278,13 +278,16 @@ export default {
         rules: this.data.list[index].rules || []
       }
 
-      if (this.data.list[index].type === 'radio' || this.data.list[index].type === 'checkbox' || this.data.list[index].type === 'select') {
+      if (this.data.list[index].type === 'radio' || this.data.list[index].type === 'checkbox' || this.data.list[index].type === 'select' || this.data.list[index].type === 'table') {
 
         cloneData = {
           ...cloneData,
           options: {
             ...cloneData.options,
-            options: cloneData.options.options.map(item => ({...item}))
+            options: cloneData.options.options.map(item => ({...item})),
+            defaultValue: typeof cloneData.options.defaultValue === "object" ?
+              JSON.parse(JSON.stringify(cloneData.options.defaultValue)) :
+              cloneData.options.defaultValue
           }
         }
       }

@@ -60,6 +60,7 @@ export default {
       addOption: 'Add Option',
       addColumn: 'Add Column',
       addTab: 'Add Tab',
+      addRow: 'Add Row',
       upload: 'Upload',
       add: 'Add'
     },

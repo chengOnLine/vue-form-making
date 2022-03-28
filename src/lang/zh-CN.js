@@ -60,6 +60,7 @@ export default {
       addOption: '添加选项',
       addColumn: '添加列',
       addTab: '添加标签',
+      addRow: "添加行",
       upload: '点击上传',
       add: '添加'
     },

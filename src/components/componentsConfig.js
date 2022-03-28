@@ -226,8 +226,11 @@ export const basicComponents = [
   },
   {
     type: "table",
-    icon: 'icon-wenzishezhi-',
+    icon: 'icon-table',
     options: {
+      disabled:false,
+      required:false,
+      dataType:"array",
       defaultValue: [{
           date: '2016-05-02',
           name: '王小虎',
@@ -246,7 +249,7 @@ export const basicComponents = [
           address: '上海市普陀区金沙江路 1516 弄'
         }
       ],
-      columns:[
+      options:[
         { 
           prop: 'date',
           label: "日期",
@@ -259,7 +262,14 @@ export const basicComponents = [
           prop: 'address',
           label: '地址',
         }
-      ]
+      ],
+      remote: false,
+      remoteOptions: [],
+      props: {
+        value: 'value',
+        label: 'label'
+      },
+      remoteFunc: ''
     }
   }
 ]

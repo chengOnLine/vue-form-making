@@ -124,7 +124,7 @@ export default function (data, type = 'vue') {
       </fm-generate-form>
       <el-button type="primary" @click="handleSubmit">提交</el-button>
     </div>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src="https://unpkg.com/form-making/dist/FormMaking.umd.js"></script>
     <script>

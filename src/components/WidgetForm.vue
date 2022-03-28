@@ -91,18 +91,17 @@ export default {
   },
   methods: {
     handleMoveEnd ({newIndex, oldIndex}) {
-      console.log('index', newIndex, oldIndex)
+      // console.log('index', newIndex, oldIndex)
     },
     handleSelectWidget (index) {
-      console.log(index, '#####')
+      console.log(index, 'index')
       this.selectWidget = this.data.list[index]
     },
     handleWidgetAdd (evt) {
       console.log('add', evt)
-      console.log('end', evt)
       const newIndex = evt.newIndex
       const to = evt.to
-      console.log(to)
+      // console.log(to)
       
       //为拖拽到容器的元素添加唯一 key
       const key = Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999)
@@ -118,15 +117,18 @@ export default {
         rules: []
       })
 
-      if (this.data.list[newIndex].type === 'radio' || this.data.list[newIndex].type === 'checkbox' || this.data.list[newIndex].type === 'select') {
+      if (this.data.list[newIndex].type === 'radio' || this.data.list[newIndex].type === 'checkbox' || this.data.list[newIndex].type === 'select' || this.data.list[newIndex].type === 'table' ) {
         this.$set(this.data.list, newIndex, {
           ...this.data.list[newIndex],
           options: {
             ...this.data.list[newIndex].options,
             options: this.data.list[newIndex].options.options.map(item => ({
               ...item
-            }))
-          }
+            })),
+            defaultValue: typeof this.data.list[newIndex].options.defaultValue === "object" ?
+              JSON.parse(JSON.stringify(this.data.list[newIndex].options.defaultValue)) :
+              this.data.list[newIndex].options.defaultValue
+          },
         })
       }
 
@@ -138,9 +140,12 @@ export default {
       }
 
       this.selectWidget = this.data.list[newIndex]
+
+      console.log("data" , JSON.parse(JSON.stringify(this.data)));
+      console.log("select" , JSON.parse(JSON.stringify(this.selectWidget)));
     },
     handleWidgetColAdd ($event, row, colIndex) {
-      console.log('coladd', $event, row, colIndex)
+      // console.log('coladd', $event, row, colIndex)
       const newIndex = $event.newIndex
       const oldIndex = $event.oldIndex
       const item = $event.item
@@ -156,7 +161,7 @@ export default {
         return false
       }
 
-      console.log('from', item)
+      // console.log('from', item)
 
       const key = Date.parse(new Date()) + '_' + Math.ceil(Math.random() * 99999)
 
@@ -172,15 +177,18 @@ export default {
         rules: []
       })
 
-      if (row.columns[colIndex].list[newIndex].type === 'radio' || row.columns[colIndex].list[newIndex].type === 'checkbox' || row.columns[colIndex].list[newIndex].type === 'select') {
+      if (row.columns[colIndex].list[newIndex].type === 'radio' || row.columns[colIndex].list[newIndex].type === 'checkbox' || row.columns[colIndex].list[newIndex].type === 'select' || row.columns[colIndex].list[newIndex].type === 'table') {
         this.$set(row.columns[colIndex].list, newIndex, {
           ...row.columns[colIndex].list[newIndex],
           options: {
             ...row.columns[colIndex].list[newIndex].options,
             options: row.columns[colIndex].list[newIndex].options.options.map(item => ({
               ...item
-            }))
-          }
+            })),
+            defaultValue: typeof row.columns[colIndex].list[newIndex].options.defaultValue === "object" ?
+              JSON.parse(JSON.stringify(row.columns[colIndex].list[newIndex].options.defaultValue)) :
+              row.columns[colIndex].list[newIndex].options.defaultValue
+          },
         })
       }
 

@@ -208,7 +208,7 @@
           :data='widget.options.defaultValue'
           style="width: 100%">
           <el-table-column 
-            v-for="(item,index) in widget.options.columns"
+            v-for="(item,index) in widget.options.options"
             :key="index"
             :prop='item.prop'
             :label='item.label'

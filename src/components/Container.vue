@@ -5,6 +5,7 @@
         <el-container>
           <el-aside width="250px">
             <div class="components-list">
+              <!-- 基础组件 -->
               <template v-if="basicFields.length">
                 <div class="widget-cate">{{$t('fm.components.basic.title')}}</div>
                 <draggable tag="ul" :list="basicComponents" 
@@ -22,7 +23,9 @@
                     </li>
                   </template>                
                 </draggable>
-              </template>            
+              </template>        
+              
+              <!-- 高级组件 -->
               <template v-if="advanceFields.length">
                 <div class="widget-cate">{{$t('fm.components.advance.title')}}</div>
                 <draggable tag="ul" :list="advanceComponents" 
@@ -42,7 +45,7 @@
                 </draggable>
               </template>
 
-              
+              <!-- 布局组件 -->
               <template v-if="layoutFields.length">
                 <div class="widget-cate">{{$t('fm.components.layout.title')}}</div>
                 <draggable tag="ul" :list="layoutComponents" 
@@ -65,7 +68,11 @@
             </div>
             
           </el-aside>
+          
+          <!-- 内容区域 -->
           <el-container class="center-container" direction="vertical">
+
+            <!-- 顶部操作按钮 -->
             <el-header class="btn-bar" style="height: 45px;">
               <slot name="action">
               </slot>
@@ -80,7 +87,8 @@
               <widget-form v-if="!resetJson"  ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
             </el-main>
           </el-container>
-          
+
+          <!-- 右侧操作按钮 -->
           <el-aside class="widget-config-container">
             <el-container>
               <el-header height="45px">
@@ -95,6 +103,7 @@
             
           </el-aside>
 
+          <!-- 预览窗口 -->
           <cus-dialog
             :visible="previewVisible"
             @on-close="previewVisible = false"
@@ -116,6 +125,7 @@
             </template>
           </cus-dialog>
 
+          <!-- 导入JSON -->
           <cus-dialog
             :visible="uploadVisible"
             @on-close="uploadVisible = false"
@@ -128,6 +138,7 @@
             <div id="uploadeditor" style="height: 400px;width: 100%;">{{jsonEg}}</div>
           </cus-dialog>
 
+          <!-- 生成JSON -->
           <cus-dialog
             :visible="jsonVisible"
             @on-close="jsonVisible = false"
@@ -143,6 +154,7 @@
             </template>
           </cus-dialog>
 
+          <!-- 生成代码 -->
           <cus-dialog
             :visible="codeVisible"
             @on-close="codeVisible = false"

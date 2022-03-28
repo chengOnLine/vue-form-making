@@ -73,6 +73,9 @@ export default {
     }
   },
   created () {
+    console.log("data" , this.data);
+    console.log("value" , this.value);
+    console.log("insite" , this.insite);
     this.generateModle(this.data.list)
   },
   mounted () {
