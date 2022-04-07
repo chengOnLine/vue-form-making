@@ -384,6 +384,54 @@
           </div>
         </el-form-item>
       </template>
+
+      <template v-if="data.type == 'table'">
+        <el-form-item label="是否展示分页" v-if="data.options.pagination">
+          <el-switch
+            v-model="data.options.pagination.show">
+          </el-switch>
+        </el-form-item>
+        <el-form-item label="操作列" v-if="data.options.actions">
+            <draggable tag="ul" :list="data.options.actions" 
+              v-bind="{group:{ name:'options'}, ghostClass: 'ghost',handle: '.drag-item'}"
+              handle=".drag-item"
+            >
+              <li v-for="(row, rowIndex) in data.options.actions" :key="rowIndex" >
+                  <el-input :style="{'width':'210px'}" size="mini" v-model="row['name']">
+                    <template slot='prepend'>{{ "name" }}</template>
+                  </el-input>
+                <i class="drag-item" style="font-size: 16px;margin: 0 5px;cursor: move;"><i class="iconfont icon-icon_bars"></i></i>
+                <el-button @click="handleActionsRemove(rowIndex)" circle plain type="danger" size="mini" icon="el-icon-minus" style="padding: 4px;margin-left: 5px;"></el-button>
+            
+              </li>
+            </draggable>
+
+            <div style="margin-left: 22px;">
+              <el-button type="text" @click="handleAddAction">添加一行</el-button>
+            </div>
+        </el-form-item>
+      </template>
+
+      <template v-if="data.type == 'button'">
+        <el-form-item :label="$t('fm.config.widget.buttonSize')">
+          <el-select v-if="Object.keys(data.options).indexOf('buttonSize')>=0" v-model="data.options.buttonSize" size="mini" >
+            <el-option value="medium" :label="$t('fm.config.widget.medium')"></el-option>
+            <el-option value="small" :label="$t('fm.config.widget.small')"></el-option>
+            <el-option value="mini" :label="$t('fm.config.widget.mini')"></el-option>
+          </el-select>
+        </el-form-item>
+
+        <el-form-item :label="$t('fm.config.widget.buttonType')">
+          <el-select v-if="Object.keys(data.options).indexOf('buttonType')>=0" v-model="data.options.buttonType" size="mini" >
+            <el-option value="primary" :label="$t('fm.config.widget.primary')"></el-option>
+            <el-option value="success" :label="$t('fm.config.widget.success')"></el-option>
+            <el-option value="warning" :label="$t('fm.config.widget.warning')"></el-option>
+            <el-option value="danger" :label="$t('fm.config.widget.danger')"></el-option>
+            <el-option value="info" :label="$t('fm.config.widget.info')"></el-option>
+            <el-option value="text" :label="$t('fm.config.widget.text')"></el-option>
+          </el-select>
+        </el-form-item>
+      </template>
     </el-form>
   </div>
 </template>
@@ -429,6 +477,11 @@ export default {
         this.data.options.defaultValue.splice(rowIndex, 1);
       }
     },
+    handleActionsRemove (rowIndex){
+      if(this.data.type === "table"){
+        this.data.options.actions.splice(rowIndex, 1);
+      }
+    },
     handleAddOption () {
       console.log("select data" , this.data);
       if(this.data.type === 'table' ){
@@ -458,6 +511,16 @@ export default {
           obj[key] = this.$t('fm.config.widget.newOption')
         }
         this.data.options.defaultValue.push(obj)
+      }
+    },
+
+    handleAddAction () {
+      if(this.data.type === 'table' ){
+        this.data.options.actions.push({
+          name:"按钮",
+          size:'small',
+          type:'text'
+        })
       }
     },
 

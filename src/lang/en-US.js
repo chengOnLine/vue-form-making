@@ -25,6 +25,7 @@ export default {
         tabs: 'Tabs',
         divider: 'Divider',
         table: 'Table',
+        button: 'Button',
       },
       basic: {
         title: 'Basic Component',
@@ -175,7 +176,19 @@ export default {
         tab: 'Tab',
         validatorRequired: 'Required',
         validatorType: 'Invaild format',
-        validatorPattern: 'Unmatched pattern'
+        validatorPattern: 'Unmatched pattern',
+
+        buttonSize: 'buttonSize',
+        buttonType: 'buytonType',
+        medium: 'medium',
+        small: 'small',
+        mini: 'mini',
+        primary: 'primary',
+        success: 'success',
+        warning: 'warning',
+        danger: 'danger',
+        info: 'info',
+        text: 'text',
       }
     },
     upload: {

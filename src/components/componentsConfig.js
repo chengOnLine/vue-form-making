@@ -231,6 +231,10 @@ export const basicComponents = [
       disabled:false,
       required:false,
       dataType:"array",
+      pagination:{
+        show: true,
+
+      },
       defaultValue: [{
           date: '2016-05-02',
           name: '王小虎',
@@ -263,6 +267,26 @@ export const basicComponents = [
           label: '地址',
         }
       ],
+      actions:[
+        { 
+          name: "查看",
+          size: 'small',
+          type: 'text',
+          disabled: false,
+        },
+        { 
+          name: "编辑",
+          size: 'small',
+          type: 'text',
+          disabled: false,
+        },
+        { 
+          name: "删除",
+          size: 'small',
+          type: 'text',
+          disabled: true,
+        },
+      ],
       remote: false,
       remoteOptions: [],
       props: {
@@ -271,7 +295,19 @@ export const basicComponents = [
       },
       remoteFunc: ''
     }
-  }
+  },
+  {
+    type: 'button',
+    icon: 'icon-button',
+    options: {
+      defaultValue: 'This is a button',
+      innerText: '按钮',
+      disabled:false,
+      required:false,
+      buttonSize:'small', //medium / small / mini
+      buttonType:'primary', // primary / success / warning / danger / info / text
+    }
+  },
 ]
 
 export const advanceComponents = [

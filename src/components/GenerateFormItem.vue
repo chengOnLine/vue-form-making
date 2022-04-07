@@ -204,7 +204,7 @@
     </template>
 
     <template v-if="widget.type == 'table'">
-        <el-table
+      <el-table
           :data='widget.options.defaultValue'
           style="width: 100%">
           <el-table-column 
@@ -214,8 +214,37 @@
             :label='item.label'
             :width='item.width'>
           </el-table-column>
+          <el-table-column
+            fixed="right"
+            label="操作">
+            <template>
+              <el-button 
+                v-for="(item , index) in widget.options.actions" 
+                :key="index"
+                :type='item.type'
+                :size='item.size'>
+                {{ item.name }}
+                </el-button>
+            </template>
+          </el-table-column>
       </el-table>
+      <el-pagination
+          v-show='widget.options.pagination.show'
+          :page-sizes="[100, 200, 300, 400]"
+          :page-size="100"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="400">
+      </el-pagination>
     </template>
+
+    <template v-if="widget.type == 'button'">
+      <el-button 
+        :type='widget.options.buttonType'
+        :size='widget.options.buttonSize'
+        
+      >{{ widget.options.innerText }}</el-button>
+    </template>
+
   </el-form-item>
 </template>
 

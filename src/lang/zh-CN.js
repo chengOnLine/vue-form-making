@@ -25,6 +25,7 @@ export default {
         tabs: '标签页',
         divider: '分割线',
         table: '表格',
+        button: '按钮',
       },
       basic: {
         title: '基础字段',
@@ -175,7 +176,19 @@ export default {
         tab: '标签页',
         validatorRequired: '必须填写',
         validatorType: '格式不正确',
-        validatorPattern: '格式不匹配'
+        validatorPattern: '格式不匹配',
+
+        buttonSize: '按钮尺寸',
+        buttonType: '按钮类型',
+        medium: 'medium',
+        small: 'small',
+        mini: 'mini',
+        primary: 'primary',
+        success: 'success',
+        warning: 'warning',
+        danger: 'danger',
+        info: 'info',
+        text: 'text',
       }
     },
     upload: {

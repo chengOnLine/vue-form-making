@@ -226,7 +226,7 @@ export default {
     },
     basicFields: {
       type: Array,
-      default: () => ['input', 'textarea', 'number', 'radio', 'checkbox', 'time', 'date', 'rate', 'color', 'select', 'switch', 'slider', 'text' , 'table']
+      default: () => ['input', 'textarea', 'number', 'radio', 'checkbox', 'time', 'date', 'rate', 'color', 'select', 'switch', 'slider', 'text' , 'table' , 'button']
     },
     advanceFields: {
       type: Array,
@@ -302,12 +302,14 @@ export default {
   },
   methods: {
     _loadComponents () {
+      console.log("basicComponents" , this.basicComponents);
       this.basicComponents = this.basicComponents.map(item => {
         return {
           ...item,
           name: this.$t(`fm.components.fields.${item.type}`)
         }
       })
+            console.log("basicComponents" , this.basicComponents);
       this.advanceComponents = this.advanceComponents.map(item => {
         return {
           ...item,
